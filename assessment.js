@@ -28,25 +28,28 @@ greeter(Bryan,27);
 
 // #6 using the arrow syntax, create a function called 'animalSounds'. animalSound takes three parameters: name, sound and a callback. animalSound should return something like this "I am wild Bryan. Hear me woof." when invoked using the wildNameReturn function you previously created as the callback.
 // CODE HERE
-var animalSounds = (str, sound, callback) => "I am "+callback(str)+". Hear me "+sound+".";
-animalSounds("Bryan","woof",wildNameReturn)
+var animalSounds = (x, y, z) => "I am " + wildNameReturn(x) + ". Hear me " + y + ".";
+//animalSounds("Bryan","woof",wildNameReturn)
 // CALLBACKS
 // Here we will write a function that takes in a callback as a parameter. You must write the callback function to make the existing function work properly.
 // EXAMPLE
 // You would create the sayHi function here
-var sayHi = (str, callback) =>{
-  callback(str);
- }
+//var sayHi = (str, callback) =>{
+  //callback(str);
+ //}
 // So you can use it down here
- sayHi('Hi Lindsey', thingToSay =>{
-    alert(thingToSay); //should alert ('Hi Lindsey')'
- });
+ //sayHi('Hi Lindsey', thingToSay =>{
+   // alert(thingToSay); //should alert ('Hi Lindsey')'
+ //});
  // You can comment out the above code so it doesn't run every time you refresh your page.
 
 // #7 using the arrow syntax, write a function called 'first' that returns the first item of the array
 var names = ['Bryan', 'Jeremy', 'Joe', 'Megan', 'Ian', 'Taylor'];
 
 // CODE HERE
+var first = (arr, callback) => {
+  callback(arr[0]);
+}
 
 first(names, firstName => {
   console.log(`The first name in names is ${firstName}`);
