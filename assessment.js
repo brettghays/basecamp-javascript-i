@@ -24,11 +24,11 @@ var sum = x => x+x;
 
 // CODE HERE
 var greeter = (name,age) => "Hi, I'm "+name+" and I am "+age+" years old.";
-greeter(Bryan,27);
+//greeter(Bryan,27);
 
 // #6 using the arrow syntax, create a function called 'animalSounds'. animalSound takes three parameters: name, sound and a callback. animalSound should return something like this "I am wild Bryan. Hear me woof." when invoked using the wildNameReturn function you previously created as the callback.
 // CODE HERE
-var animalSounds = (x, y, z) => "I am " + wildNameReturn(x) + ". Hear me " + y + ".";
+var animalSounds = (name, sound, callback) => "I am " + callback(name) + ". Hear me " + sound + ".";
 //animalSounds("Bryan","woof",wildNameReturn)
 // CALLBACKS
 // Here we will write a function that takes in a callback as a parameter. You must write the callback function to make the existing function work properly.
@@ -59,6 +59,9 @@ first(names, firstName => {
 // #8 using the arrow syntax, write a function called 'multiply' that multiplies two numbers. Invoke the callback with the result of the multiplication.
 
 // CODE HERE
+var multiply = (x,y,callback) => {
+  callback(x*y);
+}
 
 multiply(4,3, answer => {
   console.log(`the answer is ${answer}`)
@@ -67,6 +70,9 @@ multiply(4,3, answer => {
 // #9 using the arrow syntax, write a function called 'last' that returns the last name in the previously crated names array using a callback function.
 
 // CODE HERE
+var last = (arr, callback) => {
+  callback(arr[arr.length-1]);
+}
 
 last(names, lastName =>{
   console.log(`The last name in names is ${lastName}`);
@@ -76,6 +82,10 @@ last(names, lastName =>{
 // #10 using the arrow syntax, write a function called 'sizer' that returns the larger of two numbers that are passed in using a callback function.
 
 // CODE HERE
+var sizer = (x,y,callback) => {
+  callback(Math.max(x,y));
+}
+  
 
 sizer(300, 33, bigger => {
   console.log(`${bigger} is the larger number`);
@@ -89,10 +99,12 @@ var friends = ['Cam', 'Corey', 'Landy'];
 // #11 add the name 'Harry' to the end of the friends array
 
 // CODE HERE
+friends.push("Harry");
 
 // #12 assign 'shortNames' the return value of any names shorter than four characters from the friends array
 
-var shortNames // CODE HERE
+var shortNames = friends.filter(x => x.length<4);// CODE HERE
+
 
 // #13 here we have created a NickNameMaker function that will shorten names to the begninning two Characters so 'Cam' will be 'CaCa. Using the nickNameMaker function, map over the previously created friends array to return the friends nick names and assign it to 'shorty'.
 
@@ -100,18 +112,22 @@ var nickNameMaker = (name) => {
   return name.split('').slice(0,2).join('') + name.split('').slice(0,2).join('');
 }
 
-var shorty // CODE HERE
+var shorty = friends.map(x => nickNameMaker(x)); // CODE HERE
 
 // #14 assign 'evens' the return value of even numbers from the numbers array
 var numbers = [1, 25, 6, 88, 47, 77, 333, 500];
 
+
 // CODE HERE
+var evens = numbers.filter(x => x%2 === 0);
 
 // #15 using the previously created numbers array, map over each number and add 3 to it and assign it to 'plusThree'.
 
 // CODE HERE
+var plusThree = numbers.map(x => x+3);
 
 // #15 using the 'goodPeople' array of objects, add a new key value pair of 'family: true' to each object. Hint: use forEach
 var goodPeople = [{name: 'George'}, {name: 'Randi'}, {name: 'Lindsey'}]
 
 // CODE HERE
+goodPeople.forEach(x => x.family=true);
